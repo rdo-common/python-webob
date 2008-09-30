@@ -55,7 +55,7 @@ environment.
 %{python_sitelib}/WebOb*.egg-info/
 
 %changelog
-* Tue Sep 30 2008 Ricky Zhou <ricky@fedoraproject.org> 0.9.3-1
+* Tue Sep 30 2008 Ricky Zhou <ricky@fedoraproject.org> 0.9.3-2
 - Add BuildRequires on python-tempita.
 
 * Tue Sep 30 2008 Ricky Zhou <ricky@fedoraproject.org> 0.9.3-1
