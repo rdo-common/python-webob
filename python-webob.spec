@@ -3,7 +3,7 @@
 Name:           python-webob
 Summary:        WSGI request and response object
 Version:        0.9.3
-Release:        1%{?dist}
+Release:        2%{?dist}
 License:        MIT
 Group:          System Environment/Libraries
 URL:            http://pythonpaste.org/webob/
@@ -14,6 +14,7 @@ BuildRequires:  python-devel
 BuildRequires:  python-setuptools-devel
 BuildRequires:  python-nose
 BuildRequires:  python-dtopt
+BuildRequires:  python-tempita
 
 %description
 WebOb provides wrappers around the WSGI request environment, and an object to 
@@ -54,6 +55,9 @@ environment.
 %{python_sitelib}/WebOb*.egg-info/
 
 %changelog
+* Tue Sep 30 2008 Ricky Zhou <ricky@fedoraproject.org> 0.9.3-1
+- Add BuildRequires on python-tempita.
+
 * Tue Sep 30 2008 Ricky Zhou <ricky@fedoraproject.org> 0.9.3-1
 - Upstream released new version.
 
