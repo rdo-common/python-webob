@@ -59,6 +59,9 @@ environment.
 * Sat Dec 06 2008 Ricky Zhou <ricky@fedoraproject.org> 0.9.4-1
 - Upstream released new version.
 
+* Sat Nov 29 2008 Ignacio Vazquez-Abrams <ivazqueznet+rpm@gmail.com> - 0.9.3-3
+- Rebuild for Python 2.6
+
 * Tue Sep 30 2008 Ricky Zhou <ricky@fedoraproject.org> 0.9.3-2
 - Add BuildRequires on python-tempita.
 
