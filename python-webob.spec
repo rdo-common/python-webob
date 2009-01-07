@@ -2,7 +2,7 @@
 
 Name:           python-webob
 Summary:        WSGI request and response object
-Version:        0.9.4
+Version:        0.9.5
 Release:        1%{?dist}
 License:        MIT
 Group:          System Environment/Libraries
@@ -56,6 +56,9 @@ environment.
 %{python_sitelib}/WebOb*.egg-info/
 
 %changelog
+* Tue Jan 06 2009 Luke Macken <lmacken@redhat.com> 0.9.5-1
+- Update to 0.9.5
+
 * Sat Dec 06 2008 Ricky Zhou <ricky@fedoraproject.org> 0.9.4-1
 - Upstream released new version.
 
