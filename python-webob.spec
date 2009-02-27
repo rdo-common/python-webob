@@ -3,7 +3,7 @@
 Name:           python-webob
 Summary:        WSGI request and response object
 Version:        0.9.5
-Release:        1%{?dist}
+Release:        2%{?dist}
 License:        MIT
 Group:          System Environment/Libraries
 URL:            http://pythonpaste.org/webob/
@@ -56,6 +56,9 @@ environment.
 %{python_sitelib}/WebOb*.egg-info/
 
 %changelog
+* Thu Feb 26 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.9.5-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_11_Mass_Rebuild
+
 * Tue Jan 06 2009 Luke Macken <lmacken@redhat.com> 0.9.5-1
 - Update to 0.9.5
 
