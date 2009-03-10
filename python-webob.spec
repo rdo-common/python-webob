@@ -2,8 +2,8 @@
 
 Name:           python-webob
 Summary:        WSGI request and response object
-Version:        0.9.5
-Release:        2%{?dist}
+Version:        0.9.6.1
+Release:        1%{?dist}
 License:        MIT
 Group:          System Environment/Libraries
 URL:            http://pythonpaste.org/webob/
@@ -30,6 +30,9 @@ environment.
 %{__rm} -f tests/test_request.py
 # Disable conftest, which assumes that WebOb is already installed
 %{__rm} -f tests/conftest.py
+# Disable performance_test, which requires repoze.profile, which isn't
+# in Fedora.
+%{__rm} -f tests/performance_test.py
 
 
 %build
@@ -56,6 +59,9 @@ environment.
 %{python_sitelib}/WebOb*.egg-info/
 
 %changelog
+* Tue Mar 10 2009 Ricky Zhou <ricky@fedoraproject.org> - 0.9.6.1-1
+- Upstream released new version.
+
 * Thu Feb 26 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.9.5-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_11_Mass_Rebuild
 
