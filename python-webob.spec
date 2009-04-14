@@ -1,16 +1,15 @@
-%{!?python_sitelib: %define python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
+%{!?python_sitelib: %global python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
 
 Name:           python-webob
 Summary:        WSGI request and response object
 Version:        0.9.6.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 License:        MIT
 Group:          System Environment/Libraries
 URL:            http://pythonpaste.org/webob/
 Source0:        http://pypi.python.org/packages/source/W/WebOb/WebOb-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildArch:      noarch
-BuildRequires:  python-devel
 BuildRequires:  python-setuptools-devel
 BuildRequires:  python-nose
 BuildRequires:  python-dtopt
@@ -59,6 +58,10 @@ environment.
 %{python_sitelib}/WebOb*.egg-info/
 
 %changelog
+* Tue Apr 14 2009 Ricky Zhou <ricky@fedoraproject.org> - 0.9.6.1-2
+- Change define to global.
+- Remove unnecessary BuildRequires on python-devel.
+
 * Tue Mar 10 2009 Ricky Zhou <ricky@fedoraproject.org> - 0.9.6.1-1
 - Upstream released new version.
 
