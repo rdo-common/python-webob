@@ -2,8 +2,8 @@
 
 Name:           python-webob
 Summary:        WSGI request and response object
-Version:        0.9.6.1
-Release:        3%{?dist}
+Version:        0.9.7.1
+Release:        1%{?dist}
 License:        MIT
 Group:          System Environment/Libraries
 URL:            http://pythonpaste.org/webob/
@@ -48,7 +48,7 @@ environment.
 
 
 %check
-./test
+nosetests
 
 
 %files
@@ -58,6 +58,9 @@ environment.
 %{python_sitelib}/WebOb*.egg-info/
 
 %changelog
+* Tue Jan 19 2010 Ricky Zhou <ricky@fedoraproject.org> - 0.9.7.1-1
+- Upstream released new version.
+
 * Sun Jul 26 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.9.6.1-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_12_Mass_Rebuild
 
