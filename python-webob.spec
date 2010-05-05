@@ -15,6 +15,7 @@ BuildRequires:  python-nose
 BuildRequires:  python-dtopt
 BuildRequires:  python-tempita
 BuildRequires:  python-wsgiproxy
+BuildRequires:  python-webtest
 
 %description
 WebOb provides wrappers around the WSGI request environment, and an object to 
