@@ -2,7 +2,7 @@
 
 Name:           python-webob
 Summary:        WSGI request and response object
-Version:        0.9.7.1
+Version:        0.9.8
 Release:        1%{?dist}
 License:        MIT
 Group:          System Environment/Libraries
@@ -24,11 +24,7 @@ environment.
 
 %prep
 %setup -q -n WebOb-%{version}
-# Disable the tests that require python-webtest
-# (which depends on python-webob to begin with)
-%{__rm} -f tests/test_request.py
-# Disable conftest, which assumes that WebOb is already installed
-%{__rm} -f tests/conftest.py
+
 # Disable performance_test, which requires repoze.profile, which isn't
 # in Fedora.
 %{__rm} -f tests/performance_test.py
@@ -48,7 +44,7 @@ environment.
 
 
 %check
-nosetests
+PYTHONPATH=$(pwd) nosetests
 
 
 %files
@@ -58,6 +54,10 @@ nosetests
 %{python_sitelib}/WebOb*.egg-info/
 
 %changelog
+* Wed May 05 2010 Luke Macken <lmacken@redhat.com> - 0.9.8-1
+- Latest upstream release
+- Get the test suite running
+
 * Tue Jan 19 2010 Ricky Zhou <ricky@fedoraproject.org> - 0.9.7.1-1
 - Upstream released new version.
 
