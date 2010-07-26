@@ -3,7 +3,7 @@
 Name:           python-webob
 Summary:        WSGI request and response object
 Version:        0.9.8
-Release:        2%{?dist}
+Release:        3%{?dist}
 License:        MIT
 Group:          System Environment/Libraries
 URL:            http://pythonpaste.org/webob/
@@ -15,7 +15,7 @@ BuildRequires:  python-nose
 BuildRequires:  python-dtopt
 BuildRequires:  python-tempita
 BuildRequires:  python-wsgiproxy
-BuildRequires:  python-webtest
+#BuildRequires:  python-webtest
 
 %description
 WebOb provides wrappers around the WSGI request environment, and an object to 
@@ -45,7 +45,7 @@ environment.
 
 
 %check
-PYTHONPATH=$(pwd) nosetests
+#PYTHONPATH=$(pwd) nosetests
 
 
 %files
@@ -55,6 +55,9 @@ PYTHONPATH=$(pwd) nosetests
 %{python_sitelib}/WebOb*.egg-info/
 
 %changelog
+* Sun Jul 25 2010 Orcan Ogetbil <oget[dot]fedora[at]gmail[dot]com> - 0.9.8-3
+- Disable tests. We need to bootstrap against python-webtest
+
 * Thu Jul 22 2010 David Malcolm <dmalcolm@redhat.com> - 0.9.8-2
 - Rebuilt for https://fedoraproject.org/wiki/Features/Python_2.7/MassRebuild
 
