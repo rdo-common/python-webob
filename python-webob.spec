@@ -1,16 +1,20 @@
+%if ! (0%{?fedora} > 12 || 0%{?rhel} > 5)
 %{!?python_sitelib: %global python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
+%endif
 
 Name:           python-webob
 Summary:        WSGI request and response object
-Version:        0.9.8
-Release:        4%{?dist}
+Version:        1.0
+Release:        1%{?dist}
 License:        MIT
 Group:          System Environment/Libraries
 URL:            http://pythonpaste.org/webob/
 Source0:        http://pypi.python.org/packages/source/W/WebOb/WebOb-%{version}.tar.gz
+# Fix a failing test (upstream commit 470:73cd90c6e162)
+Patch0:         WebOb-1.0-test_request.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildArch:      noarch
-BuildRequires:  python-setuptools-devel
+BuildRequires:  python2-devel
 BuildRequires:  python-nose
 BuildRequires:  python-dtopt
 BuildRequires:  python-tempita
@@ -25,6 +29,7 @@ environment.
 
 %prep
 %setup -q -n WebOb-%{version}
+%patch0 -p1
 
 # Disable performance_test, which requires repoze.profile, which isn't
 # in Fedora.
@@ -55,6 +60,9 @@ PYTHONPATH=$(pwd) nosetests
 %{python_sitelib}/WebOb*.egg-info/
 
 %changelog
+* Tue Dec 14 2010 Ricky Zhou <ricky@fedoraproject.org> - 1.0-1
+- Upstream released new version.
+
 * Sun Jul 25 2010 Orcan Ogetbil <oget[dot]fedora[at]gmail[dot]com> - 0.9.8-4
 - Reenable tests since python-webtest is now available
 

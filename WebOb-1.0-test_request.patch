@@ -1,0 +1,12 @@
+diff -r 9e4a2db41203 -r 73cd90c6e162 tests/test_request.py
+--- a/tests/test_request.py	Fri Sep 24 04:09:03 2010 +0300
++++ b/tests/test_request.py	Fri Oct 01 12:50:10 2010 +0300
+@@ -12,7 +12,7 @@
+     return [
+         'Hello world!\n',
+         'The get is %r' % request.str_GET,
+-        ' and Val is %s\n' % request.GET.get('name'),
++        ' and Val is %s\n' % request.str_GET.get('name'),
+         'The languages are: %s\n' % request.accept_language.best_matches('en-US'),
+         'The accepttypes is: %s\n' % request.accept.best_match(['application/xml', 'text/html']),
+         'post is %r\n' % request.str_POST,
