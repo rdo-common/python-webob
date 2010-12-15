@@ -15,6 +15,7 @@ Patch0:         WebOb-1.0-test_request.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildArch:      noarch
 BuildRequires:  python2-devel
+BuildRequires:  python-setuptools-devel
 BuildRequires:  python-nose
 BuildRequires:  python-dtopt
 BuildRequires:  python-tempita
