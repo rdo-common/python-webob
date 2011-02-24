@@ -4,14 +4,12 @@
 
 Name:           python-webob
 Summary:        WSGI request and response object
-Version:        1.0
-Release:        2%{?dist}
+Version:        1.0.3
+Release:        1%{?dist}
 License:        MIT
 Group:          System Environment/Libraries
 URL:            http://pythonpaste.org/webob/
 Source0:        http://pypi.python.org/packages/source/W/WebOb/WebOb-%{version}.tar.gz
-# Fix a failing test (upstream commit 470:73cd90c6e162)
-Patch0:         WebOb-1.0-test_request.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildArch:      noarch
 BuildRequires:  python2-devel
@@ -30,7 +28,6 @@ environment.
 
 %prep
 %setup -q -n WebOb-%{version}
-%patch0 -p1
 
 # Disable performance_test, which requires repoze.profile, which isn't
 # in Fedora.
@@ -61,6 +58,9 @@ PYTHONPATH=$(pwd) nosetests
 %{python_sitelib}/WebOb*.egg-info/
 
 %changelog
+* Thu Feb 24 2011 Luke Macken <lmacken@redhat.com> - 1.0.3-1
+- Update to 1.0.3
+
 * Wed Feb 09 2011 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.0-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_15_Mass_Rebuild
 
