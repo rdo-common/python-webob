@@ -4,12 +4,12 @@
 
 Name:           python-webob
 Summary:        WSGI request and response object
-Version:        1.0.3
+Version:        1.0.5
 Release:        1%{?dist}
 License:        MIT
 Group:          System Environment/Libraries
 URL:            http://pythonpaste.org/webob/
-Source0:        http://pypi.python.org/packages/source/W/WebOb/WebOb-%{version}.tar.gz
+Source0:        http://pypi.python.org/packages/source/W/WebOb/WebOb-%{version}.zip
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildArch:      noarch
 BuildRequires:  python2-devel
@@ -58,6 +58,9 @@ PYTHONPATH=$(pwd) nosetests
 %{python_sitelib}/WebOb*.egg-info/
 
 %changelog
+* Mon Mar 21 2011 Luke Macken <lmacken@redhat.com> - 1.0.5-1
+- Update to 1.0.3, which restores Python 2.4 support
+
 * Thu Feb 24 2011 Luke Macken <lmacken@redhat.com> - 1.0.3-1
 - Update to 1.0.3
 
