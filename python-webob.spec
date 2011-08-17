@@ -59,7 +59,7 @@ PYTHONPATH=$(pwd) nosetests
 
 %changelog
 * Mon Mar 21 2011 Luke Macken <lmacken@redhat.com> - 1.0.5-1
-- Update to 1.0.3, which restores Python 2.4 support
+- Update to 1.0.5, which restores Python 2.4 support
 
 * Thu Feb 24 2011 Luke Macken <lmacken@redhat.com> - 1.0.3-1
 - Update to 1.0.3
