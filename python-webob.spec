@@ -4,7 +4,7 @@
 
 Name:           python-webob
 Summary:        WSGI request and response object
-Version:        1.0.5
+Version:        1.0.8
 Release:        1%{?dist}
 License:        MIT
 Group:          System Environment/Libraries
@@ -58,6 +58,9 @@ PYTHONPATH=$(pwd) nosetests
 %{python_sitelib}/WebOb*.egg-info/
 
 %changelog
+* Wed Aug 17 2011 Nils Philippsen <nils@redhat.com> - 1.0.8-1
+- Update to 1.0.8 for TurboGears 2.1.1 which needs 1.0.7 (#663117)
+
 * Mon Mar 21 2011 Luke Macken <lmacken@redhat.com> - 1.0.5-1
 - Update to 1.0.5, which restores Python 2.4 support
 
