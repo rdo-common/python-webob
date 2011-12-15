@@ -4,7 +4,7 @@
 
 Name:           python-webob
 Summary:        WSGI request and response object
-Version:        1.0.8
+Version:        1.1.1
 Release:        1%{?dist}
 License:        MIT
 Group:          System Environment/Libraries
@@ -15,9 +15,6 @@ BuildArch:      noarch
 BuildRequires:  python2-devel
 BuildRequires:  python-setuptools-devel
 BuildRequires:  python-nose
-BuildRequires:  python-dtopt
-BuildRequires:  python-tempita
-BuildRequires:  python-wsgiproxy
 BuildRequires:  python-webtest
 
 %description
@@ -58,6 +55,10 @@ PYTHONPATH=$(pwd) nosetests
 %{python_sitelib}/WebOb*.egg-info/
 
 %changelog
+* Wed Dec 14 2011 Luke Macken <lmacken@redhat.com> - 1.1.1-1
+- Update to the latest stable release
+- Remove wsgiproxy, tempita, and dtopt from our build requirements
+
 * Wed Aug 17 2011 Nils Philippsen <nils@redhat.com> - 1.0.8-1
 - Update to 1.0.8 for TurboGears 2.1.1 which needs 1.0.7 (#663117)
 
