@@ -5,7 +5,7 @@
 Name:           python-webob
 Summary:        WSGI request and response object
 Version:        1.1.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 License:        MIT
 Group:          System Environment/Libraries
 URL:            http://pythonpaste.org/webob/
@@ -55,6 +55,9 @@ PYTHONPATH=$(pwd) nosetests
 %{python_sitelib}/WebOb*.egg-info/
 
 %changelog
+* Sat Jan 14 2012 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.1.1-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_17_Mass_Rebuild
+
 * Wed Dec 14 2011 Luke Macken <lmacken@redhat.com> - 1.1.1-1
 - Update to the latest stable release
 - Remove wsgiproxy, tempita, and dtopt from our build requirements
