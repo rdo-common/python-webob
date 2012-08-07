@@ -1,0 +1,12 @@
+
+To use version 1.2.1 of python WebOB it is nescesary
+to explicitly load it so as not to get the system version
+of WebOb. 
+
+Manually modifying sys.path is an easy and reliable way
+to use this module.
+
+>>> import sys
+>>> sys.path.insert(0, '/usr/lib/python2.7/site-packages/WebOb-1.2.1-py2.7.egg')
+>>> import webob
+
