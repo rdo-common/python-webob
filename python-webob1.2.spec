@@ -2,12 +2,14 @@
 %global with_python3 1
 %endif
 
+%{!?pyver: %global pyver %(%{__python} -c "import sys ; print sys.version[:3]")}
+
 %global modname webob
 
 Name:           python-webob1.2
 Summary:        WSGI request and response object
 Version:        1.2.1
-Release:        5%{?dist}
+Release:        6%{?dist}
 License:        MIT
 Group:          System Environment/Libraries
 URL:            http://pythonpaste.org/webob/
@@ -72,8 +74,7 @@ popd
 %install
 %if 0%{?with_python3}
 pushd %{py3dir}
-# FIXME - this hardcoding of 3.2 is a bad idea :/
-easy_install-3.2 -m --prefix %{buildroot}%{_usr} dist/*.egg
+easy_install-%{pyver} -m --prefix %{buildroot}%{_usr} dist/*.egg
 %{__chmod} 0644 %{buildroot}%{python3_sitelib}/WebOb-%{version}-*.egg/%{modname}/*.py
 popd
 %endif
@@ -102,6 +103,9 @@ popd
 %endif
 
 %changelog
+* Tue Oct 16 2012 Ralph Bean <rbean@redhat.com> - 1.2.1-6
+- Use pyver macro to use the correct easy-install.
+
 * Tue Oct 16 2012 Ralph Bean <rbean@redhat.com> - 1.2.1-5
 - Forced rebuild.
 
