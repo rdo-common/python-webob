@@ -7,7 +7,7 @@
 Name:           python-webob1.2
 Summary:        WSGI request and response object
 Version:        1.2.1
-Release:        4%{?dist}
+Release:        5%{?dist}
 License:        MIT
 Group:          System Environment/Libraries
 URL:            http://pythonpaste.org/webob/
@@ -102,6 +102,9 @@ popd
 %endif
 
 %changelog
+* Tue Oct 16 2012 Ralph Bean <rbean@redhat.com> - 1.2.1-5
+- Forced rebuild.
+
 * Mon Aug 06 2012 Ralph Bean <rbean@redhat.com> - 1.2.1-4
 - Modernized the with_python3 conditional.
 - Updated README.Fedora from 1.0.x to 1.2.1.
