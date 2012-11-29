@@ -1,15 +1,16 @@
 %if 0%{?fedora}
 %global with_python3 1
+%{!?py3ver: %global py3ver %(%{__python3} -c "import sys ; print(sys.version[:3])")}
 %endif
 
-%{!?pyver: %global pyver %(%{__python} -c "import sys ; print sys.version[:3]")}
+%{!?py2ver: %global py2ver %(%{__python} -c "import sys ; print sys.version[:3]")}
 
 %global modname webob
 
 Name:           python-webob1.2
 Summary:        WSGI request and response object
 Version:        1.2.1
-Release:        8%{?dist}
+Release:        9%{?dist}
 License:        MIT
 Group:          System Environment/Libraries
 URL:            http://pythonpaste.org/webob/
@@ -74,13 +75,13 @@ popd
 %install
 %if 0%{?with_python3}
 pushd %{py3dir}
-easy_install-3.3 -m --prefix %{buildroot}%{_usr} dist/*.egg
+easy_install-%{py3ver} -m --prefix %{buildroot}%{_usr} dist/*.egg
 %{__chmod} 0644 %{buildroot}%{python3_sitelib}/WebOb-%{version}-*.egg/%{modname}/*.py
 popd
 %endif
 
 %{__mkdir} -p %{buildroot}%{python_sitelib}
-easy_install -m --prefix %{buildroot}%{_usr} dist/*.egg
+easy_install-%{py2ver} -m --prefix %{buildroot}%{_usr} dist/*.egg
 %{__chmod} 0644 %{buildroot}%{python_sitelib}/WebOb-%{version}-*.egg/%{modname}/*.py
 
 %check
@@ -103,6 +104,9 @@ popd
 %endif
 
 %changelog
+* Thu Nov 29 2012 Ralph Bean <rbean@redhat.com> - 1.2.1-9
+- Trying pyver again with py2ver and py3ver.  Getting ugly.
+
 * Thu Nov 29 2012 Ralph Bean <rbean@redhat.com> - 1.2.1-8
 - Hardcode python3 version
 
