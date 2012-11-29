@@ -9,7 +9,7 @@
 Name:           python-webob1.2
 Summary:        WSGI request and response object
 Version:        1.2.1
-Release:        6%{?dist}
+Release:        7%{?dist}
 License:        MIT
 Group:          System Environment/Libraries
 URL:            http://pythonpaste.org/webob/
@@ -103,6 +103,9 @@ popd
 %endif
 
 %changelog
+* Thu Nov 29 2012 Ralph Bean <rbean@redhat.com> - 1.2.1-7
+- Forced rebuild.
+
 * Tue Oct 16 2012 Ralph Bean <rbean@redhat.com> - 1.2.1-6
 - Use pyver macro to use the correct easy-install.
 
