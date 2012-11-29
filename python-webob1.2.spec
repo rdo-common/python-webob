@@ -9,7 +9,7 @@
 Name:           python-webob1.2
 Summary:        WSGI request and response object
 Version:        1.2.1
-Release:        7%{?dist}
+Release:        8%{?dist}
 License:        MIT
 Group:          System Environment/Libraries
 URL:            http://pythonpaste.org/webob/
@@ -74,7 +74,7 @@ popd
 %install
 %if 0%{?with_python3}
 pushd %{py3dir}
-easy_install-%{pyver} -m --prefix %{buildroot}%{_usr} dist/*.egg
+easy_install-3.3 -m --prefix %{buildroot}%{_usr} dist/*.egg
 %{__chmod} 0644 %{buildroot}%{python3_sitelib}/WebOb-%{version}-*.egg/%{modname}/*.py
 popd
 %endif
@@ -103,6 +103,9 @@ popd
 %endif
 
 %changelog
+* Thu Nov 29 2012 Ralph Bean <rbean@redhat.com> - 1.2.1-8
+- Hardcode python3 version
+
 * Thu Nov 29 2012 Ralph Bean <rbean@redhat.com> - 1.2.1-7
 - Forced rebuild.
 
