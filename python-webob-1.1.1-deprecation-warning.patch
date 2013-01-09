@@ -1,0 +1,11 @@
+diff -up WebOb-1.1.1/webob/dec.py.bak WebOb-1.1.1/webob/dec.py
+--- WebOb-1.1.1/webob/dec.py.bak	2013-01-09 10:31:50.304990921 +0100
++++ WebOb-1.1.1/webob/dec.py	2013-01-09 10:33:55.159524392 +0100
+@@ -139,7 +139,6 @@ class wsgify(object):
+             start_response = args[0]
+             req = self.RequestClass(environ)
+             req.response = req.ResponseClass()
+-            req.response.request = req
+             try:
+                 args = self.args
+                 if self.middleware_wraps:

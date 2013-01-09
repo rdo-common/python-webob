@@ -1,16 +1,13 @@
-%if ! (0%{?fedora} > 12 || 0%{?rhel} > 5)
-%{!?python_sitelib: %global python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
-%endif
-
 Name:           python-webob
 Summary:        WSGI request and response object
 Version:        1.1.1
-Release:        3%{?dist}
+Release:        4%{?dist}
 License:        MIT
 Group:          System Environment/Libraries
 URL:            http://pythonpaste.org/webob/
 Source0:        http://pypi.python.org/packages/source/W/WebOb/WebOb-%{version}.zip
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
+# fix deprecation warning (rhbz#801312)
+Patch0:         python-webob-1.1.1-deprecation-warning.patch
 BuildArch:      noarch
 BuildRequires:  python2-devel
 BuildRequires:  python-setuptools-devel
@@ -25,6 +22,7 @@ environment.
 
 %prep
 %setup -q -n WebOb-%{version}
+%patch0 -p1
 
 # Disable performance_test, which requires repoze.profile, which isn't
 # in Fedora.
@@ -36,12 +34,7 @@ environment.
 
 
 %install
-%{__rm} -rf %{buildroot}
 %{__python} setup.py install --skip-build --root %{buildroot}
-
-
-%clean
-%{__rm} -rf %{buildroot}
 
 
 %check
@@ -49,12 +42,15 @@ PYTHONPATH=$(pwd) nosetests
 
 
 %files
-%defattr(-,root,root,-)
 %doc docs/*
 %{python_sitelib}/webob/
 %{python_sitelib}/WebOb*.egg-info/
 
 %changelog
+* Wed Jan 09 2013 Matthias Runge <mrunge@redhat.com> - 1.1.1-4
+- fix deprecation warning (rhbz#801312)
+- minor spec cleanup
+
 * Sat Jul 21 2012 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.1.1-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_18_Mass_Rebuild
 
