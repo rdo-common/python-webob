@@ -10,12 +10,17 @@
 Name:           python-webob1.2
 Summary:        WSGI request and response object
 Version:        1.2.3
-Release:        1%{?dist}
+Release:        2%{?dist}
 License:        MIT
 Group:          System Environment/Libraries
 URL:            http://pythonpaste.org/webob/
 Source0:        http://pypi.python.org/packages/source/W/WebOb/WebOb-%{version}.tar.gz
 Source1:        README.Fedora
+
+# https://github.com/Pylons/webob/issues/75
+# Fix build/test issue on python 3
+Patch1:         webob-1.2.3-test-headers2-fix.patch
+
 BuildArch:      noarch
 BuildRequires:  python2-devel
 BuildRequires:  python-setuptools
@@ -57,6 +62,8 @@ cp -p %{SOURCE1} .
 # Disable performance_test, which requires repoze.profile, which isn't
 # in Fedora.
 %{__rm} -f tests/performance_test.py
+
+%patch1 -p1 -b .test_headers2
 
 %if 0%{?with_python3}
 rm -rf %{py3dir}
@@ -104,7 +111,7 @@ popd
 %endif
 
 %changelog
-* Thu Jan 10 2013 Pádraig Brady <P@draigBrady.com> - 1.2.3-1
+* Thu Jan 10 2013 Pádraig Brady <P@draigBrady.com> - 1.2.3-2
 - Update to WebOb-1.2.3
 
 * Thu Nov 29 2012 Ralph Bean <rbean@redhat.com> - 1.2.1-9
