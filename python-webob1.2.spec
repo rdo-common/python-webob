@@ -9,12 +9,12 @@
 
 Name:           python-webob1.2
 Summary:        WSGI request and response object
-Version:        1.2.1
-Release:        9%{?dist}
+Version:        1.2.3
+Release:        1%{?dist}
 License:        MIT
 Group:          System Environment/Libraries
 URL:            http://pythonpaste.org/webob/
-Source0:        http://pypi.python.org/packages/source/W/WebOb/WebOb-%{version}.zip
+Source0:        http://pypi.python.org/packages/source/W/WebOb/WebOb-%{version}.tar.gz
 Source1:        README.Fedora
 BuildArch:      noarch
 BuildRequires:  python2-devel
@@ -104,6 +104,9 @@ popd
 %endif
 
 %changelog
+* Thu Jan 10 2013 Pádraig Brady <P@draigBrady.com> - 1.2.3-1
+- Update to WebOb-1.2.3
+
 * Thu Nov 29 2012 Ralph Bean <rbean@redhat.com> - 1.2.1-9
 - Trying pyver again with py2ver and py3ver.  Getting ugly.
 
