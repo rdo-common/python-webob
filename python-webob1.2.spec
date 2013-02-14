@@ -10,7 +10,7 @@
 Name:           python-webob1.2
 Summary:        WSGI request and response object
 Version:        1.2.3
-Release:        2%{?dist}
+Release:        3%{?dist}
 License:        MIT
 Group:          System Environment/Libraries
 URL:            http://pythonpaste.org/webob/
@@ -111,6 +111,9 @@ popd
 %endif
 
 %changelog
+* Thu Feb 14 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.2.3-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_19_Mass_Rebuild
+
 * Thu Jan 10 2013 Pádraig Brady <P@draigBrady.com> - 1.2.3-2
 - Update to WebOb-1.2.3
 
