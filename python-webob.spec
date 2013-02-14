@@ -1,7 +1,7 @@
 Name:           python-webob
 Summary:        WSGI request and response object
 Version:        1.1.1
-Release:        4%{?dist}
+Release:        5%{?dist}
 License:        MIT
 Group:          System Environment/Libraries
 URL:            http://pythonpaste.org/webob/
@@ -47,6 +47,9 @@ PYTHONPATH=$(pwd) nosetests
 %{python_sitelib}/WebOb*.egg-info/
 
 %changelog
+* Thu Feb 14 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.1.1-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_19_Mass_Rebuild
+
 * Wed Jan 09 2013 Matthias Runge <mrunge@redhat.com> - 1.1.1-4
 - fix deprecation warning (rhbz#801312)
 - minor spec cleanup
