@@ -1,18 +1,43 @@
+%if 0%{?fedora}
+%global with_python3 1
+%{!?py3ver: %global py3ver %(%{__python3} -c "import sys ; print(sys.version[:3])")}
+%endif
+
+%{!?py2ver: %global py2ver %(%{__python} -c "import sys ; print sys.version[:3]")}
+
+%global modname webob
+
 Name:           python-webob
 Summary:        WSGI request and response object
-Version:        1.1.1
-Release:        5%{?dist}
+Version:        1.2.3
+Release:        4%{?dist}
 License:        MIT
 Group:          System Environment/Libraries
 URL:            http://pythonpaste.org/webob/
-Source0:        http://pypi.python.org/packages/source/W/WebOb/WebOb-%{version}.zip
-# fix deprecation warning (rhbz#801312)
-Patch0:         python-webob-1.1.1-deprecation-warning.patch
+Source0:        http://pypi.python.org/packages/source/W/WebOb/WebOb-%{version}.tar.gz
+Source1:        README.Fedora
+
+# https://github.com/Pylons/webob/issues/75
+# Fix build/test issue on python 3
+Patch1:         webob-1.2.3-test-headers2-fix.patch
+
 BuildArch:      noarch
 BuildRequires:  python2-devel
-BuildRequires:  python-setuptools-devel
+BuildRequires:  python-setuptools
 BuildRequires:  python-nose
+BuildRequires:  python-dtopt
+BuildRequires:  python-tempita
+BuildRequires:  python-wsgiproxy
 BuildRequires:  python-webtest
+
+%if 0%{?with_python3}
+BuildRequires:  python3-devel
+BuildRequires:  python3-setuptools
+BuildRequires:  python3-nose
+%endif
+
+Provides: python-webob1.2 = %{version}-%{release}
+Obsoletes: python-webob1.2 < 1.2.3-4
 
 %description
 WebOb provides wrappers around the WSGI request environment, and an object to 
@@ -20,39 +45,120 @@ help create WSGI responses. The objects map much of the specified behavior of
 HTTP, including header parsing and accessors for other standard parts of the 
 environment.
 
+%if 0%{?with_python3}
+%package -n python3-webob
+Summary:        WSGI request and response object
+Group:          System Environment/Libraries
+
+Requires:       python3
+
+%description -n python3-webob
+WebOb provides wrappers around the WSGI request environment, and an object to 
+help create WSGI responses. The objects map much of the specified behavior of 
+HTTP, including header parsing and accessors for other standard parts of the 
+environment.
+%endif
+
 %prep
 %setup -q -n WebOb-%{version}
-%patch0 -p1
-
+cp -p %{SOURCE1} .
 # Disable performance_test, which requires repoze.profile, which isn't
 # in Fedora.
 %{__rm} -f tests/performance_test.py
 
+%patch1 -p1 -b .test_headers2
+
+%if 0%{?with_python3}
+rm -rf %{py3dir}
+cp -a . %{py3dir}
+%endif
 
 %build
 %{__python} setup.py build
 
+%if 0%{?with_python3}
+pushd %{py3dir}
+%{__python3} setup.py build
+popd
+%endif
 
 %install
-%{__python} setup.py install --skip-build --root %{buildroot}
+%if 0%{?with_python3}
+pushd %{py3dir}
+%{__python3} setup.py install --skip-build --root %{buildroot}
+#%{__chmod} 0644 %{buildroot}%{python3_sitelib}/WebOb-%{version}-*.egg/%{modname}/*.py
+popd
+%endif
 
+%{__mkdir} -p %{buildroot}%{python_sitelib}
+%{__python} setup.py install --skip-build --root %{buildroot}
+#%{__chmod} 0644 %{buildroot}%{python_sitelib}/WebOb-%{version}-*.egg/%{modname}/*.py
 
 %check
-PYTHONPATH=$(pwd) nosetests
+%{__python} setup.py test
 
+%if 0%{?with_python3}
+pushd %{py3dir}
+%{__python3} setup.py test
+popd
+%endif
 
 %files
-%doc docs/*
+%doc docs/* README.Fedora
 %{python_sitelib}/webob/
-%{python_sitelib}/WebOb*.egg-info/
+%{python_sitelib}/WebOb-%{version}-py%{py2ver}.egg-info
+
+%if 0%{?with_python3}
+%files -n python3-webob
+%doc docs/* README.Fedora
+%{python3_sitelib}/webob/
+%{python3_sitelib}/WebOb-%{version}-py%{py3ver}.egg-info
+%endif
 
 %changelog
-* Thu Feb 14 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.1.1-5
+* Tue Apr  2 2013 Luke Macken <lmacken@redhat.com> - 1.2.3-4
+- Rebase with and obsolete the python-webob1.2 forward-compat package
+
+* Thu Feb 14 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.2.3-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_19_Mass_Rebuild
+
+* Thu Jan 10 2013 Pádraig Brady <P@draigBrady.com> - 1.2.3-2
+- Update to WebOb-1.2.3
 
 * Wed Jan 09 2013 Matthias Runge <mrunge@redhat.com> - 1.1.1-4
 - fix deprecation warning (rhbz#801312)
 - minor spec cleanup
+
+* Thu Nov 29 2012 Ralph Bean <rbean@redhat.com> - 1.2.1-9
+- Trying pyver again with py2ver and py3ver.  Getting ugly.
+
+* Thu Nov 29 2012 Ralph Bean <rbean@redhat.com> - 1.2.1-8
+- Hardcode python3 version
+
+* Thu Nov 29 2012 Ralph Bean <rbean@redhat.com> - 1.2.1-7
+- Forced rebuild.
+
+* Tue Oct 16 2012 Ralph Bean <rbean@redhat.com> - 1.2.1-6
+- Use pyver macro to use the correct easy-install.
+
+* Tue Oct 16 2012 Ralph Bean <rbean@redhat.com> - 1.2.1-5
+- Forced rebuild.
+
+* Mon Aug 06 2012 Ralph Bean <rbean@redhat.com> - 1.2.1-4
+- Modernized the with_python3 conditional.
+- Updated README.Fedora from 1.0.x to 1.2.1.
+
+* Mon Aug 06 2012 Ralph Bean <rbean@redhat.com> - 1.2.1-3
+- Removed unreferenced %%global pypiname.
+- Changed %%check invocation from "nosetests" to "python setup.py test"
+- Added python3 support.
+
+* Mon Aug 06 2012 Ralph Bean <rbean@redhat.com> - 1.2.1-2
+- Typofix BR: python-setuptools-devel -> python-setuptools
+
+* Mon Aug 06 2012 Ralph Bean <rbean@redhat.com> - 1.2.1-1
+- Fork from python-webob1.0 for forward-compat python-webob1.2.
+- Some modernization of the spec file.
 
 * Sat Jul 21 2012 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.1.1-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_18_Mass_Rebuild
@@ -63,6 +169,12 @@ PYTHONPATH=$(pwd) nosetests
 * Wed Dec 14 2011 Luke Macken <lmacken@redhat.com> - 1.1.1-1
 - Update to the latest stable release
 - Remove wsgiproxy, tempita, and dtopt from our build requirements
+
+* Thu Nov 17 2011 Steve Traylen <steve.traylen@cern.ch> - 1.0.8-3
+- Rename package from python-webob10 to python-webob1.0
+
+* Thu Nov 17 2011 Steve Traylen <steve.traylen@cern.ch> - 1.0.8-2
+- Fedora package adapted to parallel installable on el6.
 
 * Wed Aug 17 2011 Nils Philippsen <nils@redhat.com> - 1.0.8-1
 - Update to 1.0.8 for TurboGears 2.1.1 which needs 1.0.7 (#663117)
