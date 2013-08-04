@@ -10,7 +10,7 @@
 Name:           python-webob
 Summary:        WSGI request and response object
 Version:        1.2.3
-Release:        5%{?dist}
+Release:        6%{?dist}
 License:        MIT
 Group:          System Environment/Libraries
 URL:            http://pythonpaste.org/webob/
@@ -115,6 +115,9 @@ popd
 %endif
 
 %changelog
+* Sun Aug 04 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.2.3-6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_20_Mass_Rebuild
+
 * Tue May  7 2013 Luke Macken <lmacken@redhat.com> - 1.2.3-5
 - Remove the python-wsgiproxy build requirement (#960463)
 
