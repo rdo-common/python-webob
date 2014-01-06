@@ -10,7 +10,7 @@
 Name:           python-webob
 Summary:        WSGI request and response object
 Version:        1.2.3
-Release:        7%{?dist}
+Release:        8%{?dist}
 License:        MIT
 Group:          System Environment/Libraries
 URL:            http://pythonpaste.org/webob/
@@ -36,7 +36,7 @@ BuildRequires:  python3-nose
 %endif
 
 Provides: python-webob1.2 = %{version}-%{release}
-Obsoletes: python-webob1.2 < 1.2.3-5
+Obsoletes: python-webob1.2 < 1.2.3-7
 
 %description
 WebOb provides wrappers around the WSGI request environment, and an object to 
@@ -50,6 +50,9 @@ Summary:        WSGI request and response object
 Group:          System Environment/Libraries
 
 Requires:       python3
+
+Provides: python3-webob1.2 = %{version}-%{release}
+Obsoletes: python3-webob1.2 < 1.2.3-7
 
 %description -n python3-webob
 WebOb provides wrappers around the WSGI request environment, and an object to 
@@ -115,6 +118,10 @@ popd
 %endif
 
 %changelog
+* Mon Jan  6 2014 Toshio Kuratomi <toshio@fedoraproject.org> - 1.2.3-8
+- And correct the obs_ver again as a later version was built
+- Add obsoletes for the python3-webob1.2 package as well
+
 * Mon Sep 16 2013 Michael Schwendt <mschwendt@fedoraproject.org> - 1.2.3-7
 - correct python-webob1.2 obs_ver
 
