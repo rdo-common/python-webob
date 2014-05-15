@@ -4,13 +4,14 @@
 %endif
 
 %{!?py2ver: %global py2ver %(%{__python} -c "import sys ; print sys.version[:3]")}
+%global with_tests 0
 
 %global modname webob
 
 Name:           python-webob
 Summary:        WSGI request and response object
 Version:        1.2.3
-Release:        8%{?dist}
+Release:        9%{?dist}
 License:        MIT
 Group:          System Environment/Libraries
 URL:            http://pythonpaste.org/webob/
@@ -24,15 +25,19 @@ Patch1:         webob-1.2.3-test-headers2-fix.patch
 BuildArch:      noarch
 BuildRequires:  python2-devel
 BuildRequires:  python-setuptools
+%if 0%{?with_tests}
 BuildRequires:  python-nose
 BuildRequires:  python-dtopt
 BuildRequires:  python-tempita
 BuildRequires:  python-webtest
+%endif # with_tests
 
 %if 0%{?with_python3}
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
+%if 0%{?with_tests}
 BuildRequires:  python3-nose
+%endif # with_tests
 %endif
 
 Provides: python-webob1.2 = %{version}-%{release}
@@ -118,6 +123,10 @@ popd
 %endif
 
 %changelog
+* Wed May 14 2014 Bohuslav Kabrda <bkabrda@redhat.com> - 1.2.3-9
+- Rebuilt for https://fedoraproject.org/wiki/Changes/Python_3.4
+- Set up macro for test bootstrap
+
 * Mon Jan  6 2014 Toshio Kuratomi <toshio@fedoraproject.org> - 1.2.3-8
 - And correct the obs_ver again as a later version was built
 - Add obsoletes for the python3-webob1.2 package as well
