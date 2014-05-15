@@ -4,14 +4,14 @@
 %endif
 
 %{!?py2ver: %global py2ver %(%{__python} -c "import sys ; print sys.version[:3]")}
-%global with_tests 0
+%global with_tests 1
 
 %global modname webob
 
 Name:           python-webob
 Summary:        WSGI request and response object
 Version:        1.2.3
-Release:        9%{?dist}
+Release:        10%{?dist}
 License:        MIT
 Group:          System Environment/Libraries
 URL:            http://pythonpaste.org/webob/
@@ -125,6 +125,9 @@ popd
 %endif
 
 %changelog
+* Thu May 15 2014 Bohuslav Kabrda <bkabrda@redhat.com> - 1.2.3-10
+- Enable tests again.
+
 * Wed May 14 2014 Bohuslav Kabrda <bkabrda@redhat.com> - 1.2.3-9
 - Rebuilt for https://fedoraproject.org/wiki/Changes/Python_3.4
 - Set up macro for test bootstrap
