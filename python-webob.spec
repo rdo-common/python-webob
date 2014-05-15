@@ -102,6 +102,7 @@ popd
 #%{__chmod} 0644 %{buildroot}%{python_sitelib}/WebOb-%{version}-*.egg/%{modname}/*.py
 
 %check
+%if 0%{?with_tests}
 %{__python} setup.py test
 
 %if 0%{?with_python3}
@@ -109,6 +110,7 @@ pushd %{py3dir}
 %{__python3} setup.py test
 popd
 %endif
+%endif # with_tests
 
 %files
 %doc docs/* README.Fedora
