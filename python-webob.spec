@@ -10,17 +10,13 @@
 
 Name:           python-webob
 Summary:        WSGI request and response object
-Version:        1.2.3
-Release:        11%{?dist}
+Version:        1.4
+Release:        1%{?dist}
 License:        MIT
 Group:          System Environment/Libraries
 URL:            http://pythonpaste.org/webob/
 Source0:        http://pypi.python.org/packages/source/W/WebOb/WebOb-%{version}.tar.gz
 Source1:        README.Fedora
-
-# https://github.com/Pylons/webob/issues/75
-# Fix build/test issue on python 3
-Patch1:         webob-1.2.3-test-headers2-fix.patch
 
 BuildArch:      noarch
 BuildRequires:  python2-devel
@@ -73,8 +69,6 @@ cp -p %{SOURCE1} .
 # in Fedora.
 %{__rm} -f tests/performance_test.py
 
-%patch1 -p1 -b .test_headers2
-
 %if 0%{?with_python3}
 rm -rf %{py3dir}
 cp -a . %{py3dir}
@@ -125,6 +119,9 @@ popd
 %endif
 
 %changelog
+* Wed Aug 27 2014 Luke Macken <lmacken@redhat.com> - 1.4-1
+- Update to 1.4
+
 * Sun Jun 08 2014 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.2.3-11
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_21_Mass_Rebuild
 
