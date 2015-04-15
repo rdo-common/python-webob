@@ -10,7 +10,7 @@
 
 Name:           python-webob
 Summary:        WSGI request and response object
-Version:        1.4
+Version:        1.4.1
 Release:        1%{?dist}
 License:        MIT
 Group:          System Environment/Libraries
@@ -119,6 +119,9 @@ popd
 %endif
 
 %changelog
+* Wed Apr 15 2015 Ralph Bean <rbean@redhat.com> - 1.4.1-1
+- new version
+
 * Wed Aug 27 2014 Luke Macken <lmacken@redhat.com> - 1.4-1
 - Update to 1.4
 
