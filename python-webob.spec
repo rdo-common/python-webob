@@ -10,8 +10,8 @@
 
 Name:           python-webob
 Summary:        WSGI request and response object
-Version:        1.4.1
-Release:        3%{?dist}
+Version:        1.4.2
+Release:        1%{?dist}
 License:        MIT
 Group:          System Environment/Libraries
 URL:            http://pythonpaste.org/webob/
@@ -119,6 +119,9 @@ popd
 %endif
 
 %changelog
+* Mon Jan 25 2016 Haïkel Guémar <hguemar@fedoraproject.org> - 1.4.2-1
+- Upstream 1.4.2
+
 * Tue Nov 10 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.4.1-3
 - Rebuilt for https://fedoraproject.org/wiki/Changes/python3.5
 
