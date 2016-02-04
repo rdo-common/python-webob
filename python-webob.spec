@@ -11,7 +11,7 @@
 Name:           python-webob
 Summary:        WSGI request and response object
 Version:        1.4.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 License:        MIT
 Group:          System Environment/Libraries
 URL:            http://pythonpaste.org/webob/
@@ -119,6 +119,9 @@ popd
 %endif
 
 %changelog
+* Thu Feb 04 2016 Fedora Release Engineering <releng@fedoraproject.org> - 1.4.2-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_24_Mass_Rebuild
+
 * Mon Jan 25 2016 Haïkel Guémar <hguemar@fedoraproject.org> - 1.4.2-1
 - Upstream 1.4.2
 
