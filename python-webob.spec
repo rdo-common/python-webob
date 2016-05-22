@@ -10,7 +10,7 @@
 
 Name:           python-webob
 Summary:        WSGI request and response object
-Version:        1.6.0
+Version:        1.6.1
 Release:        1%{?dist}
 License:        MIT
 Group:          System Environment/Libraries
@@ -119,6 +119,9 @@ popd
 %endif
 
 %changelog
+* Sun May 22 2016 Luke Macken <lmacken@redhat.com> - 1.6.1-1
+- Update to 1.6.1. Fixes bug #1338436
+
 * Sun Apr 10 2016 Kevin Fenzi <kevin@scrye.com> - 1.6.0-1
 - Update to 1.6.0. Fixes bug #1300180
 
