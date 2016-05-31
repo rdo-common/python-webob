@@ -15,7 +15,7 @@ Release:        1%{?dist}
 License:        MIT
 Group:          System Environment/Libraries
 URL:            http://pythonpaste.org/webob/
-Source0:        http://pypi.python.org/packages/source/W/WebOb/WebOb-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/W/WebOb/WebOb-%{version}.tar.gz
 Source1:        README.Fedora
 
 BuildArch:      noarch
@@ -119,6 +119,9 @@ popd
 %endif
 
 %changelog
+* Tue May 31 2016 Nils Philippsen <nils@redhat.com>
+- fix source URL
+
 * Sun May 22 2016 Luke Macken <lmacken@redhat.com> - 1.6.1-1
 - Update to 1.6.1. Fixes bug #1338436
 
