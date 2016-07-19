@@ -11,7 +11,7 @@
 Name:           python-webob
 Summary:        WSGI request and response object
 Version:        1.6.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 License:        MIT
 Group:          System Environment/Libraries
 URL:            http://pythonpaste.org/webob/
@@ -119,6 +119,9 @@ popd
 %endif
 
 %changelog
+* Tue Jul 19 2016 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.6.1-2
+- https://fedoraproject.org/wiki/Changes/Automatic_Provides_for_Python_RPM_Packages
+
 * Tue May 31 2016 Nils Philippsen <nils@redhat.com>
 - fix source URL
 
