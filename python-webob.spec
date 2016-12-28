@@ -10,8 +10,8 @@
 
 Name:           python-webob
 Summary:        WSGI request and response object
-Version:        1.6.2
-Release:        2%{?dist}
+Version:        1.7.0
+Release:        1%{?dist}
 License:        MIT
 Group:          System Environment/Libraries
 URL:            http://pythonpaste.org/webob/
@@ -26,6 +26,7 @@ BuildRequires:  python-nose
 BuildRequires:  python-dtopt
 BuildRequires:  python-tempita
 BuildRequires:  python-webtest
+BuildRequires:  python2-pytest
 %endif # with_tests
 
 %if 0%{?with_python3}
@@ -33,6 +34,7 @@ BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
 %if 0%{?with_tests}
 BuildRequires:  python3-nose
+BuildRequires:  python3-pytest
 %endif # with_tests
 %endif
 
@@ -119,6 +121,9 @@ popd
 %endif
 
 %changelog
+* Wed Dec 28 2016 Kevin Fenzi <kevin@scrye.com> - 1.7.0-1
+- Update to 1.7.0. Fixes bug #1408197
+
 * Mon Dec 19 2016 Miro Hrončok <mhroncok@redhat.com> - 1.6.2-2
 - Rebuild for Python 3.6
 
