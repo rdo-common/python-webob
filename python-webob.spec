@@ -10,8 +10,8 @@
 
 Name:           python-webob
 Summary:        WSGI request and response object
-Version:        1.7.0
-Release:        2%{?dist}
+Version:        1.7.1
+Release:        1%{?dist}
 License:        MIT
 Group:          System Environment/Libraries
 URL:            http://pythonpaste.org/webob/
@@ -121,6 +121,9 @@ popd
 %endif
 
 %changelog
+* Sat Feb 25 2017 Kevin Fenzi <kevin@scrye.com> - 1.7.1-1
+- Update to 1.7.1. Fixes bug #1413950
+
 * Sat Feb 11 2017 Fedora Release Engineering <releng@fedoraproject.org> - 1.7.0-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_26_Mass_Rebuild
 
