@@ -10,7 +10,7 @@
 
 Name:           python-webob
 Summary:        WSGI request and response object
-Version:        1.7.1
+Version:        1.7.2
 Release:        1%{?dist}
 License:        MIT
 Group:          System Environment/Libraries
@@ -121,6 +121,9 @@ popd
 %endif
 
 %changelog
+* Sat Mar 25 2017 Kevin Fenzi <kevin@scrye.com> - 1.7.2-1
+- Update to 1.7.2. Fixes bug #1432922
+
 * Sat Feb 25 2017 Kevin Fenzi <kevin@scrye.com> - 1.7.1-1
 - Update to 1.7.1. Fixes bug #1413950
 
