@@ -11,7 +11,7 @@
 Name:           python-webob
 Summary:        WSGI request and response object
 Version:        1.7.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 License:        MIT
 Group:          System Environment/Libraries
 URL:            http://pythonpaste.org/webob/
@@ -38,6 +38,7 @@ BuildRequires:  python3-pytest
 %endif # with_tests
 %endif
 
+Provides: python2-webob = %{version}-%{release}
 Provides: python-webob1.2 = %{version}-%{release}
 Obsoletes: python-webob1.2 < 1.2.3-7
 
@@ -121,6 +122,9 @@ popd
 %endif
 
 %changelog
+* Wed Jan 29 2020 Yatin Karel <ykarel@redhat.com> - 1.7.2-2
+- Provides python2-webob
+
 * Sat Mar 25 2017 Kevin Fenzi <kevin@scrye.com> - 1.7.2-1
 - Update to 1.7.2. Fixes bug #1432922
 
